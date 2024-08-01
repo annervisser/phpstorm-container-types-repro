@@ -2,11 +2,10 @@
 
 namespace Anner\TestPhpDiTypes;
 
-use DateTimeImmutable;
 use Pimple\Container as PimpleContainer;
 
 /** @psalm-suppress UnusedClass */
-final class AbstractApiControllerProvider
+final class Reproduction
 {
 	public function __construct(
 		private ContainerWrapper $containerWrapper,
@@ -14,27 +13,27 @@ final class AbstractApiControllerProvider
 	}
 
 
-	public function works(): DateTimeImmutable
+	public function works(): string
 	{
 		$container = $this->containerWrapper->getDI();
-		$testService = $container->get(DateTimeImmutable::class);
-		return $testService;
+		$service = $container->get(ExampleService::class);
+		return $service->method1();
 	}
 
 
-	public function stillWorks(): DateTimeImmutable
+	public function stillWorks(): string
 	{
 		$cdc = new ContainerWrapper(new PimpleContainer());
 		$container = $cdc->getDI();
-		$testService = $container->get(DateTimeImmutable::class);
-		return $testService;
+		$service = $container->get(ExampleService::class);
+		return $service->method1();
 	}
 
-	public function doesntwork(): DateTimeImmutable
+	public function doesntWork(): string
 	{
 		$cdc = new ContainerWrapper($this->containerWrapper->getPimple());
 		$container = $cdc->getDI();
-		$testService = $container->get(DateTimeImmutable::class);
-		return $testService;
+		$service = $container->get(ExampleService::class);
+		return $service->method1();
 	}
 }
