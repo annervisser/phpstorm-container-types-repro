@@ -1,0 +1,21 @@
+{
+    "name": "anner/test-php-di-types",
+    "require": {
+        "php": "8.3.*",
+        "vimeo/psalm": "^5.25",
+        "php-di/php-di": "^7.0",
+        "psr/container": "^2.0",
+        "pimple/pimple": "^3.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Anner\\TestPhpDiTypes\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Anner Visser",
+            "email": "anner.visser@woodwing.com"
+        }
+    ]
+}
